@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  db-pg-features-api:
+    image: postgres:14.3
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+       - "5432:5432"
+    volumes:
+      - ./src/db/data:/var/lib/postgresql/data
+
+  features-api:
+    restart: on-failure
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app/
+      # - /app/node_modules
+    command:  npm run dev && npm install
+    depends_on:
+      - db-pg-features-api
