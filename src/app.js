@@ -4,14 +4,15 @@ const cors = require('cors');
 
 const marksRoutes = require('./routes/marks.routes.js');
 
+require('./db/db-connection/db-postgres.js').testDbConnection();
+require('./db/db-models/feature.model.js').syncronizeFeature();
+
 const app = express();
 
 const corsOptions = {
     origin: '*',
     optionsSuccesssStatus:200
 }
-
-require('./db/db-connection/db-postgres.js').testDbConnection();
 
 app.use(cors(corsOptions));
 
