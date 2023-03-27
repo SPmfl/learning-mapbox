@@ -19,7 +19,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - .:/app/
+      - .:/api/
     command:  npm run dev && npm install
     depends_on:
       - db-pg-features-api

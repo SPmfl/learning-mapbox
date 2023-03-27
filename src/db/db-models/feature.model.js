@@ -10,13 +10,19 @@ const Feature = sequelize.define('Feature', {
     type: DataTypes.JSON,
     allowNull: false
   }
-},{
+}, {
   sequelize,
   timestamps: false
 });
 
-await Feature.sync().then( ()=>{
-  console.log("Feature Model synced");
-});
+const syncronizeFeature = async () => {
+  try {
+    await Feature.sync().then(() => {
+      console.log("Feature Model synced");
+    });
+  } catch (error) {
+    console.error("Feature Model Not synced", error );
+  }
+}
 
 module.exports = Feature;

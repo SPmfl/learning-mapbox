@@ -5,7 +5,7 @@ const markController = {};
 
 
 markController.getAllFeatures = (req, res)=>{
-
+    res.status(200).send("<h1>Hola getAllFeatures</h1>");
 }
 
 markController.getFeature = (req, res)=>{

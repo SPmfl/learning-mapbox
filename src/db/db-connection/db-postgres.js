@@ -10,11 +10,22 @@ const dbenv = {
     database: process.env.POSTGRES_DATABASE,
 }
 
-const sequelize = new Sequelize(dbenv.database, dbenv.user, dbenv.password, {
-    host: dbenv.host,
-    dialect: 'postgres',
-    logging: console.log
-});
+// const sequelize = new Sequelize(
+//     dbenv.database | 'postgres',
+//     dbenv.user | 'postgres',
+//     dbenv.password | 'postgres',
+//     {
+//         host: dbenv.host | 'localhost',
+//         dialect: 'postgres',
+//         logging: console.log
+//     }
+// );
+
+const sequelize = new Sequelize('postgres://postgres:postgres@db-pg-features-api:5432/postgres',
+    {
+        dialect: 'postgres',
+        logging: console.log
+    });
 
 const testDbConnection = async () => {
     try {
@@ -25,4 +36,4 @@ const testDbConnection = async () => {
     }
 }
 
-module.exports = {sequelize, testDbConnection};
+module.exports = { sequelize, testDbConnection };
