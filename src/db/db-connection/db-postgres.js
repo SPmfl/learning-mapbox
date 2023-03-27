@@ -1,4 +1,4 @@
-const Sequelize  = require('sequelize');
+const { Sequelize } = require('sequelize');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -10,13 +10,19 @@ const dbenv = {
     database: process.env.POSTGRES_DATABASE,
 }
 
-const sequelize2 = new Sequelize(dbenv.user,dbenv.password, dbenv.database, {
+const sequelize = new Sequelize(dbenv.database, dbenv.user, dbenv.password, {
     host: dbenv.host,
-    dialect: 'postgres'
+    dialect: 'postgres',
+    logging: console.log
 });
-// const sequelize = new Sequelize('postgres','postgres','postgres',{
-//     host: 'db-postgres',
-//     dialect: 'postgres'
-// });
 
-module.exports = sequelize2;
+const testDbConnection = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully $$.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
+
+module.exports = {sequelize, testDbConnection};
