@@ -10,5 +10,15 @@ router.post('/', markController.createFeature );
 router.delete('/:id', markController.deleteFeature );
 router.put('/:id', markController.updateFeature );
 
+/*
+curl -i -X GET http://localhost:4000
+
+curl -i -X GET http://localhost:4000/423
+
+curl -i -X POST -d "{ type : 'Feature', geometry: { type : "Point", coordinates : [[-75.41669, 37.77683]] } }"
+*/
+
+
+
 
 module.exports = router;
