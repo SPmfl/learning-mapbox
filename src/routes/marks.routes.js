@@ -7,8 +7,8 @@ const router = Router();
 router.get('/', markController.getAllFeatures );
 router.get('/:id', markController.getFeature );
 router.post('/', markController.createFeature );
+router.put('/', markController.updateFeature );
 router.delete('/:id', markController.deleteFeature );
-router.put('/:id', markController.updateFeature );
 
 /*
 curl -i -X GET http://localhost:4000

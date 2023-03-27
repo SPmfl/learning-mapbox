@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:true}));
 
 app.get('/', (req, res)=>{
-    res.status(200).send('Geojson Features API - welcome?');
+    res.status(200).send('Geojson Features API - welcome?\n');
 });
 
 app.use('/marks', marksRoutes);
