@@ -11,11 +11,15 @@ const Feature = sequelize.define('Feature', {
     allowNull: false
   }
 }, {
-  sequelize,
+  //sequelize,
+  tableName: 'Features',
   timestamps: false
 });
 
-const syncronizeFeature = async () => {
+//Feature.sync().then(()=>console.log("table Features (re)created")).catch(error => console.error(error));
+
+
+ const syncronizeFeature = async () => {
   try {
     await Feature.sync().then(() => {
       console.log("Feature Model synced");
@@ -25,4 +29,5 @@ const syncronizeFeature = async () => {
   }
 }
 
-module.exports = Feature;
+
+module.exports = { Feature, syncronizeFeature };
