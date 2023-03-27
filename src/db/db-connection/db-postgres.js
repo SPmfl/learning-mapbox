@@ -12,8 +12,8 @@ const dbenv = {
 
 const sequelize = new Sequelize(
     dbenv.database,
-    dbenv.user ,
-    dbenv.password ,
+    dbenv.user,
+    dbenv.password,
     {
         host: dbenv.host ,
         dialect: 'postgres',
