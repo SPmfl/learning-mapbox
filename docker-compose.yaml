@@ -3,9 +3,6 @@ services:
 
   db-pg-features-api:
     image: postgres:14.3
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -23,7 +20,6 @@ services:
       - "4000:4000"
     volumes:
       - .:/app/
-      # - /app/node_modules
     command:  npm run dev && npm install
     depends_on:
       - db-pg-features-api
