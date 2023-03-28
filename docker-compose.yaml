@@ -9,7 +9,7 @@ services:
     ports:
        - "5432:5432"
     volumes:
-      - ./src/db/data:/var/lib/postgresql/data
+      - /src/db/data:/var/lib/postgresql
 
   features-api:
     restart: on-failure
